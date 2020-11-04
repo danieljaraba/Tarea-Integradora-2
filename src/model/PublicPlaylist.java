@@ -1,4 +1,4 @@
-package model;
+package src.model;
 
 public class PublicPlaylist extends Playlist{
     //ATRIBUTES
@@ -9,4 +9,19 @@ public class PublicPlaylist extends Playlist{
         super(name);
         this.grade = grade;
     }
+
+    /**
+     * @return double return the grade
+     */
+    public double getGrade() {
+        return grade;
+    }
+
+    /**
+     * @param grade the grade to set
+     */
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
 }
