@@ -5,6 +5,7 @@ public class User {
     private String userName;
     private String password;
     private int age;
+    private int songsShared;
     
     //Relationships
     private Category category;
@@ -15,6 +16,7 @@ public class User {
         this.password = password;
         this.age = age;
         this.category = Category.NEWBIE;
+        this.songsShared = 0;
     }
 
     /**
@@ -73,6 +75,20 @@ public class User {
         this.category = category;
     }
 
+    /**
+     * @return int return the songsShared
+     */
+    public int getSongsShared() {
+        return songsShared;
+    }
+
+    /**
+     * @param songsShared the songsShared to set
+     */
+    public void setSongsShared(int songsShared) {
+        this.songsShared = songsShared;
+    }
+
     public String showUser(){
         String user = "************* User *************\n"+
                       "** UserName: "+ userName + "\n"+
@@ -82,4 +98,8 @@ public class User {
         return user;
     }
     
+    public void addShared(){
+        songsShared++;
+    }
+
 }

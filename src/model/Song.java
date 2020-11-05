@@ -90,4 +90,13 @@ public class Song {
         this.genre = genre;
     }
 
+    public String showSongs(){
+        String text = "\n**************  Song **************\n"+
+                      "** Title: "+ title + "\n"+
+                      "** Artist: "+ author + "\n"+
+                      "** Duration: "+ length + "\n"+
+                      "** Genre: "+ genre + "\n"+
+                      "***********************************\n";
+        return text;
+    }
 }
