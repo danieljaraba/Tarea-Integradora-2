@@ -1,4 +1,4 @@
-package src.model;
+package model;
 
 public class PublicPlaylist extends Playlist{
     //ATRIBUTES
@@ -12,31 +12,18 @@ public class PublicPlaylist extends Playlist{
         this.numOfGrades = 0;
     }
 
-    /**
-     * @return double return the grade
-     */
     public double getGrade() {
         return grade;
     }
 
-    /**
-     * @param grade the grade to set
-     */
     public void setGrade(double grade) {
         this.grade = grade;
     }
 
-
-    /**
-     * @return int return the numOfGrades
-     */
     public int getNumOfGrades() {
         return numOfGrades;
     }
 
-    /**
-     * @param numOfGrades the numOfGrades to set
-     */
     public void setNumOfGrades(int numOfGrades) {
         this.numOfGrades = numOfGrades;
     }
@@ -53,7 +40,7 @@ public class PublicPlaylist extends Playlist{
 
     @Override
     public String showPlaylist(){
-        String text = "\n**************  Playlist **************\n"+
+        String text = "\n**************  Public Playlist **************\n"+
                       "**  Title: "+ super.getName() + "\n"+
                       "**  Duration: "+ super.getMinutes() + ":" + super.getSeconds() + "\n"+
                       "**  Genre: " + super.showGenre() + "\n"+

@@ -1,5 +1,5 @@
-package src.ui;
-import src.model.Mcs;
+package ui;
+import model.Mcs;
 import java.util.Scanner;
 
 public class Main {

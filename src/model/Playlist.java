@@ -1,4 +1,4 @@
-package src.model;
+package model;
 
 public abstract class Playlist {
     //Atributes
@@ -22,44 +22,26 @@ public abstract class Playlist {
         this.numOfSongs = 0;
     }
 
-    /**
-     * @return String return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return Genre[] return the genres
-     */
     public Genre[] getGenres() {
         return genres;
     }
 
-    /**
-     * @param genres the genres to set
-     */
     public void setGenres(Genre[] genres) {
         this.genres = genres;
     }
 
-    /**
-     * @return Song[] return the songs
-     */
     public Song[] getSongs() {
         return songs;
     }
 
-    /**
-     * @param songs the songs to set
-     */
     public void setSongs(Song[] songs) {
         this.songs = songs;
     }
@@ -112,45 +94,26 @@ public abstract class Playlist {
         return text;
     }
 
-
-    /**
-     * @param minutes the minutes to set
-     */
     public void setMinutes(int minutes) {
         this.minutes = minutes;
     }
 
-    /**
-     * @param seconds the seconds to set
-     */
     public void setSeconds(int seconds) {
         this.seconds = seconds;
     }
 
-    /**
-     * @return int return the numOfSongs
-     */
     public int getNumOfSongs() {
         return numOfSongs;
     }
 
-    /**
-     * @param numOfSongs the numOfSongs to set
-     */
     public void setNumOfSongs(int numOfSongs) {
         this.numOfSongs = numOfSongs;
     }
 
-    /**
-     * @return int return the numOfGenres
-     */
     public int getNumOfGenres() {
         return numOfGenres;
     }
 
-    /**
-     * @param numOfGenres the numOfGenres to set
-     */
     public void setNumOfGenres(int numOfGenres) {
         this.numOfGenres = numOfGenres;
     }

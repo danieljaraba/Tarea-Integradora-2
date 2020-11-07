@@ -1,4 +1,4 @@
-package src.model;
+package model;
 
 public class Song {
     //Atributes
@@ -22,58 +22,34 @@ public class Song {
         this.genre = aGenre;
     }
 
-    /**
-     * @return String return the title
-     */
     public String getTitle() {
         return title;
     }
 
-    /**
-     * @param title the title to set
-     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * @return String return the author
-     */
     public String getAuthor() {
         return author;
     }
 
-    /**
-     * @param author the author to set
-     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
-    /**
-     * @return String return the releaseDate
-     */
     public String getReleaseDate() {
         return releaseDate;
     }
 
-    /**
-     * @param releaseDate the releaseDate to set
-     */
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    /**
-     * @return Genre return the genre
-     */
     public Genre getGenre() {
         return genre;
     }
 
-    /**
-     * @param genre the genre to set
-     */
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
@@ -88,30 +64,18 @@ public class Song {
         return text;
     }
 
-    /**
-     * @return int return the minutes
-     */
     public int getMinutes() {
         return minutes;
     }
 
-    /**
-     * @param minutes the minutes to set
-     */
     public void setMinutes(int minutes) {
         this.minutes = minutes;
     }
 
-    /**
-     * @return int return the seconds
-     */
     public int getSeconds() {
         return seconds;
     }
 
-    /**
-     * @param seconds the seconds to set
-     */
     public void setSeconds(int seconds) {
         this.seconds = seconds;
     }

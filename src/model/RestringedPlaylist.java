@@ -1,4 +1,4 @@
-package src.model;
+package model;
 
 public class RestringedPlaylist extends Playlist{
     //ATRIBUTES
@@ -14,17 +14,11 @@ public class RestringedPlaylist extends Playlist{
         users[3] = user4;
         users[4] = user5;
     }
-    
-    /**
-     * @return String[] return the users
-     */
+
     public String[] getUsers() {
         return users;
     }
 
-    /**
-     * @param users the users to set
-     */
     public void setUsers(String[] users) {
         this.users = users;
     }
@@ -39,7 +33,7 @@ public class RestringedPlaylist extends Playlist{
 
     @Override
     public String showPlaylist(){
-        String text = "\n**************  Playlist **************\n"+
+        String text = "\n**************  Restringed Playlist **************\n"+
                       "**  Title: "+ super.getName() + "\n"+
                       "**  Duration: "+ super.getMinutes() + ":" + super.getSeconds() + "\n"+
                       "**  Genre: " + super.showGenre() + "\n"+
