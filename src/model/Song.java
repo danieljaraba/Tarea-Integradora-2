@@ -5,17 +5,19 @@ public class Song {
     private String title;
     private String author;
     private String releaseDate;
-    private int length;
+    private int minutes;
+    private int seconds;
 
     //Relationships
     private Genre genre;
 
     //Builder
-    public Song(String title, String author, String releaseDate, int length, String genre){
+    public Song(String title, String author, String releaseDate, int minutes, int seconds, String genre){
         this.title = title;
         this.author = author;
         this.releaseDate = releaseDate;
-        this.length = length;
+        this.minutes = minutes;
+        this.seconds = seconds;
         Genre aGenre = Genre.valueOf(genre);
         this.genre = aGenre;
     }
@@ -63,20 +65,6 @@ public class Song {
     }
 
     /**
-     * @return int return the length
-     */
-    public int getLength() {
-        return length;
-    }
-
-    /**
-     * @param length the length to set
-     */
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    /**
      * @return Genre return the genre
      */
     public Genre getGenre() {
@@ -94,9 +82,38 @@ public class Song {
         String text = "\n**************  Song **************\n"+
                       "** Title: "+ title + "\n"+
                       "** Artist: "+ author + "\n"+
-                      "** Duration: "+ length + "\n"+
+                      "** Duration: "+ minutes + ";" + seconds + "\n"+
                       "** Genre: "+ genre + "\n"+
                       "***********************************\n";
         return text;
     }
+
+    /**
+     * @return int return the minutes
+     */
+    public int getMinutes() {
+        return minutes;
+    }
+
+    /**
+     * @param minutes the minutes to set
+     */
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    /**
+     * @return int return the seconds
+     */
+    public int getSeconds() {
+        return seconds;
+    }
+
+    /**
+     * @param seconds the seconds to set
+     */
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
+
 }

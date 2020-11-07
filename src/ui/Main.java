@@ -33,6 +33,9 @@ public class Main {
                          "(3) To add a new song.\n"+
                          "(4) To create a new playlist.\n"+
                          "(5) Show the songs list.\n"+
+                         "(6) To qualify a public playlist.\n"+
+                         "(7) To add a song to a playlist.\n"+
+                         "(8) To show all playlists.\n"+
                          "\n"
                         );
     }
@@ -53,6 +56,15 @@ public class Main {
             break;
             case 5:
                 showSongList();
+            break;
+            case 6:
+                qualifyPublicPlaylist();
+            break;
+            case 7:
+                addSongToPlaylist();
+            break;
+            case 8:
+                showAllPlaylists();
             break;
         }
     }
@@ -92,9 +104,8 @@ public class Main {
         System.out.print("Seconds length: ");
         int seconds = sc.nextInt();
         sc.nextLine();
-        int length = (minutes*60)+seconds;
         String genre = askGenre();
-        manager.addSong(index, title, author, releaseDate, length, genre);
+        manager.addSong(index, title, author, releaseDate, minutes, seconds, genre);
     }
 
     public String askGenre(){
@@ -137,7 +148,30 @@ public class Main {
         System.out.print(manager.showUsersName());
         int index = sc.nextInt();
         sc.nextLine();
-        return index;
+        return index-1;
+    }
+
+    public int askRestringedUser(){
+        System.out.print(manager.showUsersName());
+        int index = sc.nextInt();
+        sc.nextLine();
+        return index-1;
+    }
+
+    public int askPlaylist(){
+        System.out.println("Select the playlist to do the action:");
+        System.out.print(manager.showPlaylists());
+        int option = sc.nextInt();
+        sc.nextLine();
+        return option-1;
+    }
+
+    public int askSong(){
+        System.out.println("Select the song to do the action:");
+        System.out.print(manager.showSongNames());
+        int option = sc.nextInt();
+        sc.nextLine();
+        return option-1;
     }
 
     public void showSongList(){
@@ -148,8 +182,74 @@ public class Main {
         System.out.println("");
         System.out.println("Welcome to the new playlist menu");
         System.out.println("Fill all the fields");
+        selectType();
+        
+    }
+
+    public void selectType(){
+        System.out.println("Select the type of playlist:");
+        System.out.print("\n 1. Public playlist\n 2. Restringed playlist \n 3. Privated playlist\n");
+        int option = sc.nextInt();
+        sc.nextLine();
+        switch(option){
+            case 1:
+                createPublicPlaylist();
+            break;
+            case 2:
+                createRestringedPlaylist();
+            break;
+            case 3:
+                createPrivatePlaylist();
+            break;
+        }
+    }
+
+    public void createPublicPlaylist(){
         System.out.print("Name: ");
         String name = sc.nextLine();
-        manager.addPlaylist(name);
+        manager.addPublicPlaylist(name);
+    }
+
+    public void createPrivatePlaylist(){
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+        int userIndex = askUser();
+        manager.addPrivatePlaylist(name, userIndex);
+    }
+
+    public void createRestringedPlaylist(){
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+        int user1Index = askUser();
+        System.out.println("Select the second user:");
+        int user2Index = askRestringedUser();
+        System.out.println("Select the third user:");
+        int user3Index = askRestringedUser();
+        System.out.println("Select the fourth user:");
+        int user4Index = askRestringedUser();
+        System.out.println("Select the fifth user:");
+        int user5Index = askRestringedUser();
+        manager.addRestringedPlaylist(user1Index, user2Index, user3Index, user4Index, user5Index, name);
+    }
+
+    public void qualifyPublicPlaylist(){
+        System.out.println("Fill all the fields:");
+        int user = askUser();
+        int playlistIndex = askPlaylist();
+        System.out.print("Grade: ");
+        double grade = sc.nextDouble();
+        sc.nextLine();
+        manager.qualifyPublic(playlistIndex, grade);
+    }
+
+    public void addSongToPlaylist(){
+        System.out.println("Select the options:");
+        int songIndex = askSong();
+        int playlistIndex = askPlaylist();
+        manager.addSongToPlaylist(songIndex, playlistIndex);
+    }
+
+    public void showAllPlaylists(){
+        System.out.print(manager.showEntirePlaylists());
     }
 }
