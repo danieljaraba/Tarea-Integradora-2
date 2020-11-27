@@ -32,6 +32,17 @@ public class RestringedPlaylist extends Playlist{
     }
 
     @Override
+    public boolean isUser(String user) {
+        boolean is = false;
+        for(int i = 0; i<5; i++){
+            if(users[i] == user){
+                is = true;
+            }
+        }
+        return is;
+    }
+
+    @Override
     public String showPlaylist(){
         String text = "\n**************  Restringed Playlist **************\n"+
                       "**  Title: "+ super.getName() + "\n"+

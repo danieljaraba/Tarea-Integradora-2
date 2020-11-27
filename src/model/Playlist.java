@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Playlist
+ * Abstract class that is used to heredate subclasses
+ * @author danieljag
+ */
 public abstract class Playlist {
     //Atributes
     private String name;
@@ -13,6 +18,11 @@ public abstract class Playlist {
     private Song[] songs;
 
     //Builder
+
+    /**
+     * Playlist, builder of Playlist <br/>
+     * @param name string, contains the name of the playlist
+     */
     public Playlist(String name){
         this.name = name;
         this.minutes = 0;
@@ -22,30 +32,11 @@ public abstract class Playlist {
         this.numOfSongs = 0;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Genre[] getGenres() {
-        return genres;
-    }
-
-    public void setGenres(Genre[] genres) {
-        this.genres = genres;
-    }
-
-    public Song[] getSongs() {
-        return songs;
-    }
-
-    public void setSongs(Song[] songs) {
-        this.songs = songs;
-    }
-
+    /**
+     * addSong, adds a song to the playlist <br/>
+     * <b> Pre:<b/> The array of songs is initialized <br/>
+     * @param song Song, contains the song that is going to be added
+     */
     public void addSong(Song song){
         songs[numOfSongs] = song;
         minutes += song.getMinutes();
@@ -58,33 +49,44 @@ public abstract class Playlist {
         numOfGenres++;
     }
 
+    /**
+     * showGenre, update the genre of the playlist <br/>
+     * <b> Pre:<b/> The playlist is created <br/>
+     * @return text, contains the info of the genres
+     */
     public String showGenre(){
-        Genre[] aGenres = genres;
-        int numOfaGenres = numOfGenres;
+        Genre[] aGenres = new Genre[numOfGenres];
         String text = "";
+        int numOfaGenres = 0;
         int cont = 0;
-        int index = 0;
         for(int i = 0; i<numOfGenres; i++){
             cont = 0;
-            for(int b = 0; i<numOfaGenres; i++){
-                if(genres[i] == aGenres[b]){
-                    cont++;
+            if(numOfaGenres > 0){
+                for(int b = 0; b<numOfaGenres; b++){
+                    if(genres[i] == aGenres[b]){
+                        cont++;
+                    }
                 }
-                if(cont > 1){
-                    index = b;
+                if(cont == 0){
+                    aGenres[numOfaGenres] = genres[i];
+                    numOfaGenres++;
                 }
+            } else{
+                aGenres[numOfaGenres] = genres[i];
+                numOfaGenres++;
             }
-            aGenres[index] = null;
-            numOfaGenres--;
         }
-        for(int i = 0; i<6; i++){
-            if(aGenres[i] != null){
-                text += aGenres[i] + ", ";
-            }
+        for(int i = 0; i<numOfaGenres; i++){
+            text += aGenres[i] + ", ";
         }
         return text;
     }
 
+    /**
+     * showPlaylist, shows the info of the playlist <br/>
+     * <b> Pre:<b/> The playlist is created <br/>
+     * @return text, contains the info of the song
+     */
     public String showPlaylist(){
         String text = "\n**************  Playlist **************\n"+
                       "**  Title: "+ name + "\n"+
@@ -94,36 +96,108 @@ public abstract class Playlist {
         return text;
     }
 
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+    /**
+     * isUser, checks if the user is in the playlist <br/>
+     * @param user string, contains the name of the user
+     * @return true
+     */
+    public boolean isUser(String user){
+        return true;
     }
 
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
+    /**
+     * 
+     * @return
+     */
+    public String getName(){
+        return name;
     }
 
-    public int getNumOfSongs() {
-        return numOfSongs;
+    /**
+     * 
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNumOfSongs(int numOfSongs) {
-        this.numOfSongs = numOfSongs;
+    /**
+     * 
+     * @return
+     */
+    public Genre[] getGenres() {
+        return genres;
     }
 
-    public int getNumOfGenres() {
-        return numOfGenres;
+    /**
+     * 
+     * @param genres
+     */
+    public void setGenres(Genre[] genres) {
+        this.genres = genres;
     }
 
-    public void setNumOfGenres(int numOfGenres) {
-        this.numOfGenres = numOfGenres;
-    }
-
+    /**
+     * 
+     * @return
+     */
     public int getMinutes(){
         return minutes;
     }
 
+    /**
+     * 
+     * @param minutes
+     */
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    /**
+     * 
+     * @return
+     */
     public int getSeconds(){
         return seconds;
     }
 
+    /**
+     * 
+     * @param seconds
+     */
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public int getNumOfSongs() {
+        return numOfSongs;
+    }
+
+    /**
+     * 
+     * @param numOfSongs
+     */
+    public void setNumOfSongs(int numOfSongs) {
+        this.numOfSongs = numOfSongs;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public int getNumOfGenres() {
+        return numOfGenres;
+    }
+
+    /**
+     * 
+     * @param numOfGenres
+     */
+    public void setNumOfGenres(int numOfGenres) {
+        this.numOfGenres = numOfGenres;
+    }
 }

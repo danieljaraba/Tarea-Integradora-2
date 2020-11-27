@@ -244,9 +244,16 @@ public class Main {
 
     public void addSongToPlaylist(){
         System.out.println("Select the options:");
+        int userIndex = askUser();
         int songIndex = askSong();
         int playlistIndex = askPlaylist();
-        manager.addSongToPlaylist(songIndex, playlistIndex);
+        boolean isUser = manager.isUserOnPlaylist(userIndex, playlistIndex);
+        if(isUser == true){
+            manager.addSongToPlaylist(songIndex, playlistIndex);
+        }
+        else{
+            System.out.println("The user doesn't have access to the playlist.");
+        }
     }
 
     public void showAllPlaylists(){
