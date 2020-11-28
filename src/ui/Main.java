@@ -2,12 +2,20 @@ package ui;
 import model.Mcs;
 import java.util.Scanner;
 
+/**
+ * Method Main
+ * @author danieljag
+ */
 public class Main {
     //Relationships
     private Mcs manager;
     private Scanner sc;
 
     //Builder
+
+    /**
+     * Main, builder of Main <br/>
+     */
     public Main(){
         sc = new Scanner(System.in);
         manager = new Mcs();
@@ -25,6 +33,10 @@ public class Main {
         } while(option != 0);
     }
 
+    /**
+     * showMenu, show the menu of options <br/>
+     * <b> Pre:<b/> The object sc is defined <br/>
+     */
     public void showMenu(){
         System.out.print("\n"+
                          "************* Menu *************\n"+
@@ -40,6 +52,10 @@ public class Main {
                         );
     }
 
+    /**
+     * executeOperation, executes the option choosed <br/>
+     * @param option int, contains the option choosed <br/>
+     */
     public void executeOperation(int option){
         switch(option){
             case 1:
@@ -69,6 +85,10 @@ public class Main {
         }
     }
 
+    /**
+     * createUser, creates one object of the class User <br/>
+     * <b> Pre:<b/> The object sc is defined <br/>
+     */
     public void createUser(){
         System.out.println("");
         System.out.println("Welcome to the new user menu");
@@ -83,10 +103,18 @@ public class Main {
         manager.addUser(userName, password, age);
     }
 
+    /**
+     * showUserList, prints the name of the users <br/>
+     * <b> Pre:<b/> The object manager is defined <br/>
+     */
     public void showUserList(){
         System.out.print(manager.showUsers());
     }
 
+    /**
+     * createSong, creates an object of the class Song <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     */
     public void createSong(){
         System.out.println("");
         System.out.println("Welcome to the new song menu");
@@ -108,6 +136,11 @@ public class Main {
         manager.addSong(index, title, author, releaseDate, minutes, seconds, genre);
     }
 
+    /**
+     * askGenre, ask the genre of the song to the user <br/>
+     * <b> Pre:<b/> The object sc is defined <br/>
+     * @return genre, the genre of the song
+     */
     public String askGenre(){
         String genre = "";
         System.out.println("Select the genre of the song:");
@@ -143,6 +176,11 @@ public class Main {
         return genre;
     }
 
+    /**
+     * askUser, asks the index of the user that is doing the action <br/>
+     * <b> Pre:<b/> The object sc is defined <br/>
+     * @return index-1, index of the user
+     */
     public int askUser(){
         System.out.println("Select the user that is doing the action:");
         System.out.print(manager.showUsersName());
@@ -151,6 +189,11 @@ public class Main {
         return index-1;
     }
 
+    /**
+     * askRestringedUser, asks the index of the restringed user that is doing the action <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     * @return index-1, index of the user
+     */
     public int askRestringedUser(){
         System.out.print(manager.showUsersName());
         int index = sc.nextInt();
@@ -158,6 +201,11 @@ public class Main {
         return index-1;
     }
 
+    /**
+     * askPlaylist, asks the index of the playlist to the user <br/>
+     * <b> Pre:<b/> The objects manager and sc are defined <br/>
+     * @return option-1, index of the playlist
+     */
     public int askPlaylist(){
         System.out.println("Select the playlist to do the action:");
         System.out.print(manager.showPlaylists());
@@ -166,6 +214,11 @@ public class Main {
         return option-1;
     }
 
+    /**
+     * askSong, asks the index of the song to the user <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     * @return option-1, index of the song
+     */
     public int askSong(){
         System.out.println("Select the song to do the action:");
         System.out.print(manager.showSongNames());
@@ -174,10 +227,17 @@ public class Main {
         return option-1;
     }
 
+    /**
+     * showSongList, prints the names of the songs <br/>
+     * <b> Pre:<b/> The object manager is defined <br/>
+     */
     public void showSongList(){
         System.out.print(manager.showSongs());
     }
 
+    /**
+     * createPlaylist, creates a playlist
+     */
     public void createPlaylist(){
         System.out.println("");
         System.out.println("Welcome to the new playlist menu");
@@ -186,6 +246,10 @@ public class Main {
         
     }
 
+    /**
+     * selectType, asks the type of playlist to the user <br/>
+     * <b> Pre:<b/> The object sc is defined <br/>
+     */
     public void selectType(){
         System.out.println("Select the type of playlist:");
         System.out.print("\n 1. Public playlist\n 2. Restringed playlist \n 3. Privated playlist\n");
@@ -204,12 +268,20 @@ public class Main {
         }
     }
 
+    /**
+     * createPublicPlaylist, creates a new public playlist <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     */
     public void createPublicPlaylist(){
         System.out.print("Name: ");
         String name = sc.nextLine();
         manager.addPublicPlaylist(name);
     }
 
+    /**
+     * createPrivatePlaylist, creates a new private playlist <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     */
     public void createPrivatePlaylist(){
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -217,6 +289,10 @@ public class Main {
         manager.addPrivatePlaylist(name, userIndex);
     }
 
+    /**
+     * createRestringedPlaylist, creates a new restringed playlist <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     */
     public void createRestringedPlaylist(){
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -232,6 +308,10 @@ public class Main {
         manager.addRestringedPlaylist(user1Index, user2Index, user3Index, user4Index, user5Index, name);
     }
 
+    /**
+     * qualifyPublicPlaylist, qualifies a public playlist <br/>
+     * <b> Pre:<b/> The public playlist is created <br/>
+     */
     public void qualifyPublicPlaylist(){
         System.out.println("Fill all the fields:");
         int user = askUser();
@@ -242,6 +322,10 @@ public class Main {
         manager.qualifyPublic(playlistIndex, grade);
     }
 
+    /**
+     * addSongToPlaylist, adds a song to a playlist <br/>
+     * <b> Pre:<b/> The objects sc and manager are defined <br/>
+     */
     public void addSongToPlaylist(){
         System.out.println("Select the options:");
         int userIndex = askUser();
@@ -256,6 +340,10 @@ public class Main {
         }
     }
 
+    /**
+     * showAllPlaylist, prints the info of all the playlists <br/>
+     * <b> Pre:<b/> The object manager is defined <br/>
+     */
     public void showAllPlaylists(){
         System.out.print(manager.showEntirePlaylists());
     }
